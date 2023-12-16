@@ -1,0 +1,123 @@
+$color-white: rgb(255, 255, 255);
+$color-grey: rgb(211, 211, 211);
+$color-vodka: rgb(193, 190, 255);
+$color-lavender: rgb(147, 142, 239);
+$color-eminence: rgb(102, 51, 153);
+$color-violet: rgba(39, 11, 96, 0.502);
+
+$image-card-bg: "https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600";
+
+@mixin button($ft-color, $bg-color) {
+    align-self: center;
+    width: 40%;
+    padding: 10px;
+    border: 0.5px solid $bg-color;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $ft-color;
+    background-color: $bg-color;
+    letter-spacing: 0.1rem;
+    transition: all 0.20s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        color: $bg-color;
+        background-color: $ft-color;
+        transform: scale(1.05);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+@mixin card-part {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+
+.p-login {
+    height: 100vh;
+    background-color: $color-vodka;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .card {
+        width: 50%;
+        display: flex;
+        background-color: $color-white;
+        border-radius: 10px;
+        min-height: 600px;
+        overflow: hidden;
+
+        .card-info {
+            @include card-part;
+            background: linear-gradient($color-violet, $color-violet), url($image-card-bg) center;
+            background-size: cover;
+            color: $color-white;
+
+            h1 {
+                font-size: 5.31rem;
+                line-height: 100px;
+            }
+
+            p {
+                text-align: justify;
+            }
+
+            div {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                span {
+                    align-self: center;
+                    color: $color-grey;
+                    font-size: 0.89rem;
+                }
+                
+                button {
+                    @include button($color-eminence, $color-white);
+                }
+            }
+        }
+
+        .card-form {
+            @include card-part;
+            align-items: center;
+
+            h1 {
+                font-size: 2.375rem;
+                color: $color-eminence;
+            }
+
+            form {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+
+                input {
+                    border: none;
+                    border-bottom: 1px solid $color-lavender;
+                    padding: 20px 10px;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                button {
+                    @include button($color-white, $color-lavender);
+                }
+            }
+        }
+    }
+}
